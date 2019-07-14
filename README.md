@@ -4,7 +4,14 @@ Normalize obfuscate name
 ### Usage
     java -jar DexNameNormalizer.jar -inDex claases.dex -outDex classes-Normal.dex -api 15 -outMappingPath classes-Mapping.txt
 	
-    ![Alt text](relative/image/ClassName.jpg?raw=true "Normalize obfuscate class")
+### Before and After
+
+The code on the left is a decompilation of an obfuscated app, and the code on the right has been deobfuscated.
+<section>
+<p align="center">
+<img src="https://raw.githubusercontent.com/Modify24x7/DexNameNormalizer/master/image/ClassName.jpg" alt="" height="380px" align="center" />
+</p>
+</section>
 	
 ### Note:
     App not runnable after normalize, analyze use only.
