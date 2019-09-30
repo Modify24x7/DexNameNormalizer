@@ -20,7 +20,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
 		// TODO Auto-generated method stub
+		// test();
 		if (args.length < 8) {
 			printUsage();
 		} else {
@@ -28,8 +30,17 @@ public class Main {
 				executeProcess(readArgs(args));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.out.println(e);
+				e.printStackTrace();
 			}
+		}
+	}
+
+	private static void test() {
+		try {
+			Transformers.normalizeClassName("test/classes.dex", "test/classes-nor.dex", Integer.valueOf("15"),
+					"test/classes-Mapping.txt");
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 
@@ -44,7 +55,7 @@ public class Main {
 
 	private static void printUsage() {
 		String command = "DexNameNormalizer.jar";
-		System.out.println("DexNameNormalizer Version: 0.1");
+		System.out.println("DexNameNormalizer Version: 0.2");
 		System.out.println();
 		System.out.println("Usage: java -jar " + command + " " + ARG_IN + " claases.dex " + ARG_OUT
 				+ " claases-Normal.dex " + ARG_API + " 15 " + ARG_MAP_PATH + " classes-Mapping.txt");

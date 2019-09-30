@@ -46,7 +46,13 @@ public class ClassName {
 
 			String Type = classDef.getType().replaceFirst(";", ""); // Lpkg/class or Lpkg/class$a
 
-			String Type2 = Type.substring(0, Type.lastIndexOf("/")); // Lpkg
+			String Type2;
+
+			if (Type.lastIndexOf("/") != -1) {
+				Type2 = Type.substring(0, Type.lastIndexOf("/")); // Lpkg
+			} else {
+				Type2 = Type; // Lpkg
+			}
 
 			String Type3 = Type.substring(Type.lastIndexOf("/") + 1); // class or class$a
 
