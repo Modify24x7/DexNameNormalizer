@@ -57,8 +57,8 @@ public class Main {
 		String command = "DexNameNormalizer.jar";
 		System.out.println("DexNameNormalizer Version: 0.2");
 		System.out.println();
-		System.out.println("Usage: java -jar " + command + " " + ARG_IN + " claases.dex " + ARG_OUT
-				+ " claases-Normal.dex " + ARG_API + " 15 " + ARG_MAP_PATH + " classes-Mapping.txt");
+		System.out.println("Usage: java -jar " + command + " " + ARG_IN + " classes.dex " + ARG_OUT
+				+ " classes-Normal.dex " + ARG_API + " 15 " + ARG_MAP_PATH + " classes-Mapping.txt");
 
 		System.out.println();
 		System.out.println("https://github.com/Modify24x7");
