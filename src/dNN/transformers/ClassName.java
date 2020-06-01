@@ -64,37 +64,43 @@ public class ClassName {
 				Type4 = ";";
 			}
 
-			if (classDef.getSourceFile() != null && classDef.getSourceFile().endsWith(".java")
-			/* && !classDef.getSourceFile().startsWith(Type3) */) {
+			String sourceFile = classDef.getSourceFile();
 
-				String TypeFinal;
+			if (sourceFile != null) {
+				if (sourceFile.endsWith(".java") || sourceFile.endsWith(".kt")) {
 
-				try {
-					TypeFinal = Type2 + "/" + classDef.getSourceFile().replaceFirst(".java", "") + Type4;
-				} catch (Exception ex) {
-					TypeFinal = classDef.getType();
-				}
+					String TypeFinal;
 
-				boolean added = false;
-				for (String clazz : classList) {
-					if (TypeFinal.equals(clazz)) {
-						added = true;
+					try {
+						TypeFinal = Type2 + "/" + sourceFile.substring(0, sourceFile.lastIndexOf(".")) + Type4;
+					} catch (Exception ex) {
+						TypeFinal = classDef.getType();
 					}
-				}
 
-				boolean added2 = false;
-				for (ClassDef cD : classes) {
-					if (TypeFinal.equals(cD.getType())) {
-						added2 = true;
+					boolean added = false;
+					for (String clazz : classList) {
+						if (TypeFinal.equals(clazz)) {
+							added = true;
+						}
 					}
-				}
 
-				if (!added && !added2) {
-					normalClassList.add(TypeFinal);
+					boolean added2 = false;
+					for (ClassDef cD : classes) {
+						if (TypeFinal.equals(cD.getType())) {
+							added2 = true;
+						}
+					}
 
-					classes.add(new ImmutableClassDef(TypeFinal, classDef.getAccessFlags(), classDef.getSuperclass(),
-							classDef.getInterfaces(), classDef.getSourceFile(), classDef.getAnnotations(),
-							classDef.getFields(), classDef.getMethods()));
+					if (!added && !added2) {
+						normalClassList.add(TypeFinal);
+
+						classes.add(new ImmutableClassDef(TypeFinal, classDef.getAccessFlags(),
+								classDef.getSuperclass(), classDef.getInterfaces(), classDef.getSourceFile(),
+								classDef.getAnnotations(), classDef.getFields(), classDef.getMethods()));
+					} else {
+						normalClassList.add(classDef.getType());
+						classes.add(classDef);
+					}
 				} else {
 					normalClassList.add(classDef.getType());
 					classes.add(classDef);
@@ -121,9 +127,9 @@ public class ClassName {
 				};
 			}
 		});
-
-		DexFile dex = dexRewriter.rewriteDexFile(getDexFile(classes, API));
-
+		
+		DexFile dex = dexRewriter.getDexFileRewriter().rewrite(getDexFile(classes, API));
+		
 		DexFileFactory.writeDexFile(outDex, dex);
 
 		// Write mapping

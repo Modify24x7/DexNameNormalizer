@@ -23,6 +23,7 @@ public class Main {
 
 		// TODO Auto-generated method stub
 		// test();
+		
 		if (args.length < 8) {
 			printUsage();
 		} else {
@@ -55,7 +56,7 @@ public class Main {
 
 	private static void printUsage() {
 		String command = "DexNameNormalizer.jar";
-		System.out.println("DexNameNormalizer Version: 0.2");
+		System.out.println("DexNameNormalizer Version: 0.3");
 		System.out.println();
 		System.out.println("Usage: java -jar " + command + " " + ARG_IN + " claases.dex " + ARG_OUT
 				+ " claases-Normal.dex " + ARG_API + " 15 " + ARG_MAP_PATH + " classes-Mapping.txt");
