@@ -2,7 +2,7 @@
 Normalize obfuscate name
 
 ### Usage
-    java -jar DexNameNormalizer.jar -inDex claases.dex -outDex classes-Normal.dex -api 15 -outMappingPath classes-Mapping.txt
+    java -jar DexNameNormalizer.jar -inDex classes.dex -outDex classes-Normal.dex -api 15 -outMappingPath classes-Mapping.txt
 	
 ### Before and After
 
