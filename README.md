@@ -1,4 +1,5 @@
-# DexNameNormalizer
+[DexNameNormalizer](https://github.com/Modify24x7/DexNameNormalizer/)
+===================
 Normalize obfuscate name
 
 ### Usage
